@@ -14,7 +14,9 @@ app.post("/post", async(req, res) => {
         text: Joi.string().min(1).required()
     })
 
-    const { error } = schema.validate(text);
+    const { error } = schema.validate({
+        text
+    });
 
     if (error) {
         res.status(400).send("O campo não pode estar vazio e deve ser do tipo 'texto'.");
